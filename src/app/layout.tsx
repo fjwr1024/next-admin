@@ -7,10 +7,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
       <head>
         <title>Next13</title>
       </head>
-      <body>
-        <div>RootLayoutHeader</div>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
