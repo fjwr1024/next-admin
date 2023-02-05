@@ -5,7 +5,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang='ja'>
       <head>
-        <title>Next13</title>
+        <title>NextAdminExample</title>
       </head>
       <body>{children}</body>
     </html>

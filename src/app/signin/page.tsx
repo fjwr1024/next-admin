@@ -3,7 +3,6 @@
 import * as React from 'react'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
@@ -30,10 +29,9 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component='main' maxWidth='xs'>
+      <Grid container direction='column' alignItems='center' justifyContent='center'>
         <Card>
           <CardContent>
-            <CssBaseline />
             <Box
               sx={{
                 display: 'flex',
@@ -45,7 +43,7 @@ export default function SignIn() {
                 <LockOutlinedIcon />
               </Avatar>
               <Typography component='h1' variant='h5'>
-                Sign in
+                Sign In
               </Typography>
               <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                 <TextField
@@ -79,7 +77,7 @@ export default function SignIn() {
             </Box>
           </CardContent>
         </Card>
-      </Container>
+      </Grid>
     </ThemeProvider>
   )
 }
