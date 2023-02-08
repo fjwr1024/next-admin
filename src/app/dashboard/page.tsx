@@ -23,6 +23,7 @@ import { mainListItems, secondaryListItems } from '../components/ListItem'
 import Chart from '../components/Chart'
 import Deposits from '../components/Deposits'
 import Orders from '../components/Orders'
+import SystemWalletInfo from '../components/SystemWalletInfo'
 
 function Copyright(props: any) {
   return (
@@ -102,7 +103,7 @@ function DashboardContent() {
         <AppBar position='absolute' open={open}>
           <Toolbar
             sx={{
-              pr: '24px', // keep right padding when drawer closed
+              pr: '24px',
             }}
           >
             <IconButton
@@ -159,6 +160,8 @@ function DashboardContent() {
         >
           <Toolbar />
           <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
+            <SystemWalletInfo />
+
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
