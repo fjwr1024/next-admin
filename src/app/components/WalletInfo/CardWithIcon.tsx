@@ -1,9 +1,6 @@
 import { FC, createElement, ReactNode } from 'react'
 import { Card, Box, Typography, Divider, Link } from '@mui/material'
 
-import cartouche from '../../../assets/images/cartouche.png'
-import cartoucheDark from '../../../assets/images/cartoucheDark.png'
-
 interface Props {
   icon: FC<any>
   title?: string
@@ -17,6 +14,7 @@ const CardWithIcon = (props: Props) => {
   return (
     <Card
       sx={{
+        width: 500,
         minHeight: 52,
         display: 'flex',
         flexDirection: 'column',
@@ -30,12 +28,8 @@ const CardWithIcon = (props: Props) => {
       <Link>
         <Box
           sx={{
-            overflow: 'inherit',
             padding: '16px',
-            background: (theme) =>
-              `url(${theme.palette.mode === 'dark' ? cartoucheDark : cartouche}) no-repeat`,
             display: 'flex',
-            justifyContent: 'space-between',
             alignItems: 'center',
             '& .icon': {
               color: (theme) => (theme.palette.mode === 'dark' ? 'inherit' : '#dc2440'),
@@ -45,12 +39,12 @@ const CardWithIcon = (props: Props) => {
           <Box width='3em' className='icon'>
             {createElement(icon, { fontSize: 'large' })}
           </Box>
-          <Box textAlign='right'>
-            <Typography color='textSecondary'>{title}</Typography>
-            <Typography variant='h5' component='h2'>
-              {subtitle || ' '}
-            </Typography>
-          </Box>
+          <Typography color='textSecondary' mb={1}>
+            {title}
+          </Typography>
+          <Typography variant='h5' component='h2'>
+            {subtitle || ' '}
+          </Typography>
         </Box>
       </Link>
       {children && <Divider />}

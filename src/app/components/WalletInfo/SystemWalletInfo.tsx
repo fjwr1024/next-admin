@@ -1,26 +1,20 @@
 import {
-  Avatar,
   Box,
-  Button,
   CardContent,
   CardHeader,
   Divider,
-  Link,
   List,
   ListItem,
-  ListItemAvatar,
   ListItemIcon,
   ListItemText,
-  Typography,
 } from '@mui/material'
 import WalletIcon from '@mui/icons-material/Wallet'
-import CommentIcon from '@mui/icons-material/Comment'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 import CardWithIcon from './CardWithIcon'
 
 const SystemWalletInfo = () => {
   return (
-    <CardWithIcon icon={WalletIcon}>
+    <CardWithIcon icon={WalletIcon} title='System Wallet Info'>
       <CardContent>
         <CardHeader avatar={<WalletIcon />} title='wallet address' subheader='Wallet Address' />
         <List>
