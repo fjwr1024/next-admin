@@ -32,8 +32,6 @@ function Copyright(props: any) {
 const mdTheme = createTheme()
 
 function DashboardContent() {
-  const [open, setOpen] = React.useState(true)
-
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>

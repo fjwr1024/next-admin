@@ -67,7 +67,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   })
 )
 
-function Hoeghogehoge() {
+function HeaderSideMenu() {
   const [open, setOpen] = useState(true)
   const toggleDrawer = () => {
     setOpen(!open)
@@ -127,6 +127,4 @@ function Hoeghogehoge() {
   )
 }
 
-export default function HeaderSideMenu() {
-  return <Hoeghogehoge />
-}
+export default HeaderSideMenu
