@@ -1,8 +1,8 @@
 import { FC, createElement, ReactNode } from 'react'
 import { Card, Box, Typography, Divider, Link } from '@mui/material'
 
-import cartouche from '../../assets/images/cartouche.png'
-import cartoucheDark from '../../assets/images/cartoucheDark.png'
+import cartouche from '../../../assets/images/cartouche.png'
+import cartoucheDark from '../../../assets/images/cartoucheDark.png'
 
 interface Props {
   icon: FC<any>
