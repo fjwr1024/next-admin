@@ -6,7 +6,6 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
@@ -14,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Card, CardContent } from '@mui/material'
+import Link from 'next/link'
 
 const theme = createTheme()
 
@@ -70,9 +70,11 @@ export default function SignIn() {
                   control={<Checkbox value='remember' color='primary' />}
                   label='Remember me'
                 />
-                <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
-                  Sign In
-                </Button>
+                <Link href='/dashboard' passHref>
+                  <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
+                    Sign In
+                  </Button>
+                </Link>
               </Box>
             </Box>
           </CardContent>
