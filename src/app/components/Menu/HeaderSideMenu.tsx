@@ -15,6 +15,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications'
 import MuiDrawer from '@mui/material/Drawer'
 
 import { mainListItems, secondaryListItems } from '../inDashBoard/ListItem'
+import { useState } from 'react'
 
 const drawerWidth: number = 240
 
@@ -66,68 +67,66 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   })
 )
 
-function DashboardContent() {
-  const [open, setOpen] = React.useState(true)
+function Hoeghogehoge() {
+  const [open, setOpen] = useState(true)
   const toggleDrawer = () => {
     setOpen(!open)
   }
 
-  function Menu() {
-    return (
-      <>
-        <AppBar position='absolute' open={open}>
-          <Toolbar
+  return (
+    <>
+      <AppBar position='absolute' open={open}>
+        <Toolbar
+          sx={{
+            pr: '24px',
+          }}
+        >
+          <IconButton
+            edge='start'
+            color='inherit'
+            aria-label='open drawer'
+            onClick={toggleDrawer}
             sx={{
-              pr: '24px',
+              marginRight: '36px',
+              ...(open && { display: 'none' }),
             }}
           >
-            <IconButton
-              edge='start'
-              color='inherit'
-              aria-label='open drawer'
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: '36px',
-                ...(open && { display: 'none' }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography component='h1' variant='h6' color='inherit' noWrap sx={{ flexGrow: 1 }}>
-              Dashboard
-            </Typography>
-            <IconButton color='inherit'>
-              <Badge badgeContent={4} color='secondary'>
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Drawer variant='permanent' open={open}>
-          <Toolbar
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              px: [1],
-            }}
-          >
-            <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-          <List component='nav'>
-            {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
-          </List>
-        </Drawer>
-      </>
-    )
-  }
+            <MenuIcon />
+          </IconButton>
+          <Typography component='h1' variant='h6' color='inherit' noWrap sx={{ flexGrow: 1 }}>
+            Dashboard
+          </Typography>
+          <IconButton color='inherit'>
+            <Badge badgeContent={4} color='secondary'>
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Drawer variant='permanent' open={open}>
+        <Toolbar
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            px: [1],
+          }}
+        >
+          <IconButton onClick={toggleDrawer}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </Toolbar>
+        <Divider />
+        <List component='nav'>
+          {mainListItems}
+          <Divider sx={{ my: 1 }} />
+          {secondaryListItems}
+        </List>
+      </Drawer>
+    </>
+  )
 }
 
-export default function Menu() {
-  return <Menu />
+export default function HeaderSideMenu() {
+  return <Hoeghogehoge />
 }
