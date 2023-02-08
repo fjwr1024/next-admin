@@ -14,7 +14,7 @@ import Chart from '../components/inDashBoard/Chart'
 import Deposits from '../components/inDashBoard/Deposits'
 import Orders from '../components/inDashBoard/Orders'
 import SystemWalletInfo from '../components/WalletInfo/SystemWalletInfo'
-import Hoeghogehoge from '../components/Menu/HeaderSideMenu'
+import HeaderSideMenu from '../components/Menu/HeaderSideMenu'
 
 function Copyright(props: any) {
   return (
@@ -36,7 +36,7 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <Hoeghogehoge />
+        <HeaderSideMenu />
         <Box
           component='main'
           sx={{

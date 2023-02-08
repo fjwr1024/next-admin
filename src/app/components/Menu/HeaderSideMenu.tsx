@@ -97,7 +97,7 @@ function HeaderSideMenu() {
             Dashboard
           </Typography>
           <IconButton color='inherit'>
-            <Badge badgeContent={4} color='secondary'>
+            <Badge badgeContent={50} color='secondary'>
               <NotificationsIcon />
             </Badge>
           </IconButton>
