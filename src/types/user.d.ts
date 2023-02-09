@@ -6,8 +6,8 @@ export interface Users {
   tickets: number
   role: UserStatus
   stripeCustomerId: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
 }
 
 export enum UserStatus {

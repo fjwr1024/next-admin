@@ -13,7 +13,8 @@ type UserApiResponse = {
   }
 }
 
-const Example = () => {
+// TODO: localhost:3000 からfetch したデータがレンダリングされない
+const Table = () => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [globalFilter, setGlobalFilter] = useState('')
   const [sorting, setSorting] = useState<SortingState>([])
@@ -25,11 +26,11 @@ const Example = () => {
   const { data, isError, isFetching, isLoading, refetch } = useQuery<UserApiResponse>({
     queryKey: [
       'table-data',
-      columnFilters, //refetch when columnFilters changes
-      globalFilter, //refetch when globalFilter changes
-      pagination.pageIndex, //refetch when pagination.pageIndex changes
-      pagination.pageSize, //refetch when pagination.pageSize changes
-      sorting, //refetch when sorting changes
+      columnFilters,
+      globalFilter,
+      pagination.pageIndex,
+      pagination.pageSize,
+      sorting,
     ],
     queryFn: async () => {
       // const fetchURL = new URL(
@@ -38,7 +39,8 @@ const Example = () => {
       //     ? 'https://www.material-react-table.com'
       //     : 'https://jsonplaceholder.typicode.com/users'
       // )
-      const fetchURL = new URL('https://jsonplaceholder.typicode.com/users')
+      // const fetchURL = new URL('https://jsonplaceholder.typicode.com/users')
+      const fetchURL = new URL('http://localhost:3000/users')
       fetchURL.searchParams.set('start', `${pagination.pageIndex * pagination.pageSize}`)
       fetchURL.searchParams.set('size', `${pagination.pageSize}`)
       fetchURL.searchParams.set('filters', JSON.stringify(columnFilters ?? []))
@@ -47,6 +49,7 @@ const Example = () => {
 
       const response = await fetch(fetchURL.href)
       const json = (await response.json()) as UserApiResponse
+      console.log('response', json)
       return json
     },
     keepPreviousData: true,
@@ -64,19 +67,19 @@ const Example = () => {
       },
       {
         accessorKey: 'walletAddress',
-        header: 'walletAddress',
+        header: 'WalletAddress',
       },
       {
         accessorKey: 'tickets',
-        header: 'tickets',
+        header: 'Tickets',
       },
       {
         accessorKey: 'role',
-        header: 'role',
+        header: 'Role',
       },
       {
         accessorKey: 'createdAt',
-        header: 'createdAt',
+        header: 'CreatedAt',
       },
     ],
     []
@@ -85,7 +88,7 @@ const Example = () => {
   return (
     <MaterialReactTable
       columns={columns}
-      data={data?.data ?? []} //data is undefined on first render
+      data={data?.data ?? []}
       initialState={{ showColumnFilters: true }}
       manualFiltering
       manualPagination
@@ -125,10 +128,10 @@ const Example = () => {
 
 const queryClient = new QueryClient()
 
-const ExampleWithReactQueryProvider = () => (
+const RQUserTable = () => (
   <QueryClientProvider client={queryClient}>
-    <Example />
+    <Table />
   </QueryClientProvider>
 )
 
-export default ExampleWithReactQueryProvider
+export default RQUserTable

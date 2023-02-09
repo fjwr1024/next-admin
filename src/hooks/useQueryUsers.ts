@@ -3,8 +3,8 @@ import axios from 'axios'
 import { Users } from './../types/user'
 
 const getUsers = async () => {
-  const { data } = await axios.get<Users[]>('https://jsonplaceholder.typicode.com/posts')
-  // const { data } = await axios.get<Users[]>('http://localhost:3000/users')
+  // const { data } = await axios.get<Users[]>('https://jsonplaceholder.typicode.com/posts')
+  const { data } = await axios.get<Users[]>('http://localhost:3000/users')
   return data
 }
 
