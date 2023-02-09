@@ -19,7 +19,7 @@ import {
   Tooltip,
 } from '@mui/material'
 import { Delete, Edit } from '@mui/icons-material'
-import { data, states } from './makeData'
+// import { data, states } from './makeData'
 
 export type Person = {
   id: string

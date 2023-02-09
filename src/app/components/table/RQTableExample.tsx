@@ -39,12 +39,13 @@ const Example = () => {
       sorting, //refetch when sorting changes
     ],
     queryFn: async () => {
-      const fetchURL = new URL(
-        '/api/data',
-        process.env.NODE_ENV === 'production'
-          ? 'https://www.material-react-table.com'
-          : 'http://localhost:3000'
-      )
+      // const fetchURL = new URL(
+      // '/api/data',
+      //   process.env.NODE_ENV === 'production'
+      //     ? 'https://www.material-react-table.com'
+      //     : 'https://jsonplaceholder.typicode.com/users'
+      // )
+      const fetchURL = new URL('https://jsonplaceholder.typicode.com/users')
       fetchURL.searchParams.set('start', `${pagination.pageIndex * pagination.pageSize}`)
       fetchURL.searchParams.set('size', `${pagination.pageSize}`)
       fetchURL.searchParams.set('filters', JSON.stringify(columnFilters ?? []))
