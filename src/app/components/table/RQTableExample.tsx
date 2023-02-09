@@ -4,20 +4,13 @@ import { IconButton, Tooltip } from '@mui/material'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import type { ColumnFiltersState, PaginationState, SortingState } from '@tanstack/react-table'
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
+import { Users } from '@/types/user'
 
 type UserApiResponse = {
-  data: Array<User>
+  data: Array<Users>
   meta: {
     totalRowCount: number
   }
-}
-
-type User = {
-  firstName: string
-  lastName: string
-  address: string
-  state: string
-  phoneNumber: string
 }
 
 const Example = () => {
@@ -59,27 +52,31 @@ const Example = () => {
     keepPreviousData: true,
   })
 
-  const columns = useMemo<MRT_ColumnDef<User>[]>(
+  const columns = useMemo<MRT_ColumnDef<Users>[]>(
     () => [
       {
-        accessorKey: 'firstName',
-        header: 'First Name',
+        accessorKey: 'id',
+        header: 'id',
       },
       {
-        accessorKey: 'lastName',
-        header: 'Last Name',
+        accessorKey: 'email',
+        header: 'Email',
       },
       {
-        accessorKey: 'address',
-        header: 'Address',
+        accessorKey: 'walletAddress',
+        header: 'walletAddress',
       },
       {
-        accessorKey: 'state',
-        header: 'State',
+        accessorKey: 'tickets',
+        header: 'tickets',
       },
       {
-        accessorKey: 'phoneNumber',
-        header: 'Phone Number',
+        accessorKey: 'role',
+        header: 'role',
+      },
+      {
+        accessorKey: 'createdAt',
+        header: 'createdAt',
       },
     ],
     []
