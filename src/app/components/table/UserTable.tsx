@@ -69,31 +69,31 @@ const headCells: readonly HeadCell[] = [
     id: 'id',
     numeric: false,
     disablePadding: true,
-    label: 'Dessert (100g serving)',
+    label: 'ID',
   },
   {
     id: 'email',
     numeric: true,
     disablePadding: false,
-    label: 'Calories',
+    label: 'Email',
   },
   {
     id: 'walletAddress',
     numeric: true,
     disablePadding: false,
-    label: 'Fat (g)',
+    label: 'Wallet Address',
   },
   {
     id: 'tickets',
     numeric: true,
     disablePadding: false,
-    label: 'Carbs (g)',
+    label: 'Tickets',
   },
   {
     id: 'role',
     numeric: true,
     disablePadding: false,
-    label: 'Protein (g)',
+    label: 'Role',
   },
 ]
 
@@ -201,7 +201,7 @@ export default function EnhancedTable() {
   const [orderBy, setOrderBy] = useState<keyof Users>('email')
   const [selected, setSelected] = useState<readonly string[]>([])
   const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(5)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
   const [rows, setRows] = useState<Users[]>([])
 
   useEffect(() => {
@@ -307,8 +307,8 @@ export default function EnhancedTable() {
                       </TableCell>
                       <TableCell align='right'>{row.email}</TableCell>
                       <TableCell align='right'>{row.walletAddress}</TableCell>
-                      <TableCell align='right'>{row.role}</TableCell>
                       <TableCell align='right'>{row.tickets}</TableCell>
+                      <TableCell align='right'>{row.role}</TableCell>
                     </TableRow>
                   )
                 })}
