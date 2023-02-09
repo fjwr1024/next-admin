@@ -2,7 +2,6 @@
 
 import '@/styles/globals.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-
 import { Box, Container, CssBaseline, Toolbar } from '@mui/material'
 import { FC, PropsWithChildren } from 'react'
 import HeaderSideMenu from './components/Menu/HeaderSideMenu'
