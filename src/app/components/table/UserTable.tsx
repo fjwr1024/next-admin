@@ -19,10 +19,8 @@ import {
   useChangeRowsPerPage,
   useChangeTablePage,
   useRowSelect,
-  useSelectAllCheck,
   useTableRequestSort,
 } from '@/hooks/useTableSort'
-import { Typography } from '@mui/material'
 
 // TODO: search 機能追加 https://qiita.com/oiz-y/items/f828d37855e87ccbc49b
 
@@ -61,8 +59,6 @@ export default function EnhancedTable() {
     setRowsPerPage(parseInt(event.target.value, 10))
     setPage(0)
   }
-
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -116,11 +112,6 @@ export default function EnhancedTable() {
                     </TableRow>
                   )
                 })}
-              {emptyRows > 0 && (
-                <TableRow>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
             </TableBody>
           </Table>
         </TableContainer>
@@ -134,10 +125,6 @@ export default function EnhancedTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <Box>
-        <Typography>selectedRowIds</Typography>
-        <Typography>{JSON.stringify(selectedRowIds)}</Typography>
-      </Box>
     </Box>
   )
 }
