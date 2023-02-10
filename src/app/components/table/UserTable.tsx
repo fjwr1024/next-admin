@@ -117,7 +117,7 @@ export default function EnhancedTable() {
                   return (
                     <TableRow
                       hover
-                      onClick={() => toggleSelected(row.id)}
+                      onClick={() => toggleSelected(String(row.id))}
                       role='checkbox'
                       aria-checked={isItemSelected}
                       tabIndex={-1}
