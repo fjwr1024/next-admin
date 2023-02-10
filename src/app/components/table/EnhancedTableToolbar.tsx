@@ -27,7 +27,7 @@ export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
         </Typography>
       ) : (
         <Typography sx={{ flex: '1 1 100%' }} variant='h6' id='tableTitle' component='div'>
-          Nutrition
+          Customers
         </Typography>
       )}
       {numSelected > 0 ? (

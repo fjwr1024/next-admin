@@ -1,1 +1,1 @@
-# Next Admin Template
+# Next Admin Example
