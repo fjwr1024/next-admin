@@ -22,6 +22,7 @@ import {
   useSelectAllCheck,
   useTableRequestSort,
 } from '@/hooks/useTableSort'
+import { Typography } from '@mui/material'
 
 // TODO: search 機能追加 https://qiita.com/oiz-y/items/f828d37855e87ccbc49b
 
@@ -52,35 +53,6 @@ export default function EnhancedTable() {
       .catch((error) => console.log(error))
   }, [])
 
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
-      const newSelected = rows.map((n) => n.email)
-      setSelected(newSelected)
-      return
-    }
-    setSelected([])
-  }
-
-  const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    const selectedIndex = selected.indexOf(name)
-    let newSelected: readonly string[] = []
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name)
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1))
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1))
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      )
-    }
-
-    setSelected(newSelected)
-  }
-
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage)
   }
@@ -106,6 +78,7 @@ export default function EnhancedTable() {
               onRequestSort={useTableRequestSort}
               rowCount={rows.length}
               checked={isSelectedAll}
+              indeterminate={isIndeterminate}
             />
             <TableBody>
               {stableSort(rows, getComparator(order, orderBy))
@@ -161,6 +134,10 @@ export default function EnhancedTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      <Box>
+        <Typography>selectedRowIds</Typography>
+        <Typography>{JSON.stringify(selectedRowIds)}</Typography>
+      </Box>
     </Box>
   )
 }

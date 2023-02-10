@@ -11,6 +11,7 @@ interface EnhancedTableProps {
   orderBy: string
   rowCount: number
   checked: boolean
+  indeterminate: boolean
 }
 
 interface HeadCell {
@@ -54,7 +55,7 @@ const headCells: readonly HeadCell[] = [
 ]
 
 export function EnhancedTableHead(props: EnhancedTableProps) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, checked } = props
+  const { onSelectAllClick, order, orderBy, indeterminate, onRequestSort, checked } = props
   const createSortHandler = (property: keyof Users) => (event: React.MouseEvent<unknown>) => {
     onRequestSort(event, property)
   }
@@ -65,8 +66,8 @@ export function EnhancedTableHead(props: EnhancedTableProps) {
         <TableCell padding='checkbox'>
           <Checkbox
             color='primary'
-            indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={checked}
+            indeterminate={indeterminate}
             onChange={onSelectAllClick}
             inputProps={{
               'aria-label': 'select all desserts',
