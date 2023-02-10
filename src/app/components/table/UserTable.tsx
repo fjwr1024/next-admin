@@ -15,6 +15,7 @@ import { EnhancedTableToolbar } from './EnhancedTableToolbar'
 import { EnhancedTableHead } from './EnhancedTableHead'
 import { getComparator, stableSort } from '@/utils/tableFunc'
 import { Order } from '@/types/table'
+import { useChangeRowsPerPage, useChangeTablePage, useTableRequestSort } from '@/hooks/useTableSort'
 
 // TODO: search 機能追加 https://qiita.com/oiz-y/items/f828d37855e87ccbc49b
 
@@ -35,12 +36,6 @@ export default function EnhancedTable() {
       })
       .catch((error) => console.log(error))
   }, [])
-
-  const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof Users) => {
-    const isAsc = orderBy === property && order === 'asc'
-    setOrder(isAsc ? 'desc' : 'asc')
-    setOrderBy(property)
-  }
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -95,7 +90,7 @@ export default function EnhancedTable() {
               order={order}
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
+              onRequestSort={useTableRequestSort}
               rowCount={rows.length}
             />
             <TableBody>
