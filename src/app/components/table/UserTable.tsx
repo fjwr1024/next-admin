@@ -15,12 +15,8 @@ import { EnhancedTableToolbar } from './EnhancedTableToolbar'
 import { EnhancedTableHead } from './EnhancedTableHead'
 import { getComparator, stableSort } from '@/utils/tableFunc'
 import { Order } from '@/types/table'
-import {
-  useChangeRowsPerPage,
-  useChangeTablePage,
-  useRowSelect,
-  useTableRequestSort,
-} from '@/hooks/useTableSort'
+import { useChangeTablePage, useRowSelect, useTableRequestSort } from '@/hooks/useTableFunc'
+import { useQueryUsers } from '@/hooks/useQueryUsers'
 
 // TODO: search 機能追加 https://qiita.com/oiz-y/items/f828d37855e87ccbc49b
 
@@ -111,7 +107,7 @@ export default function EnhancedTable() {
           component='div'
           count={rows.length}
           rowsPerPage={rowsPerPage}
-          page={page}
+          page={0}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />

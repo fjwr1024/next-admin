@@ -1,5 +1,4 @@
 import { Order } from '@/types/order'
-import { Users } from '@/types/user'
 
 export function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {

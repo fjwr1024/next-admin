@@ -38,17 +38,20 @@ export const useRowSelect = (
   }
 }
 
-export const useChangeTablePage = (event: unknown, newPage: number) => {
-  const [page, setPage] = useState(0)
-  setPage(newPage)
-}
-
-export const useChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+export const useChangeTablePage = (event: React.ChangeEvent<HTMLInputElement>, newPage: number) => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  const changeTablePage = (event, newPage: number) => setPage(newPage)
 
-  setRowsPerPage(parseInt(event.target.value, 10))
-  setPage(0)
+  const useChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    rowsPerPage: number
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10))
+    setPage(0)
+  }
+
+  return { changeTablePage, useChangeRowsPerPage }
 }
 
 export const useTableRequestSort = (event: React.MouseEvent<unknown>, property: keyof Users) => {
