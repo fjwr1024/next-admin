@@ -15,7 +15,13 @@ import { EnhancedTableToolbar } from './EnhancedTableToolbar'
 import { EnhancedTableHead } from './EnhancedTableHead'
 import { getComparator, stableSort } from '@/utils/tableFunc'
 import { Order } from '@/types/table'
-import { useChangeRowsPerPage, useChangeTablePage, useTableRequestSort } from '@/hooks/useTableSort'
+import {
+  useChangeRowsPerPage,
+  useChangeTablePage,
+  useRowSelect,
+  useSelectAllCheck,
+  useTableRequestSort,
+} from '@/hooks/useTableSort'
 
 // TODO: search 機能追加 https://qiita.com/oiz-y/items/f828d37855e87ccbc49b
 
@@ -26,6 +32,15 @@ export default function EnhancedTable() {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const [rows, setRows] = useState<Users[]>([])
+
+  const {
+    selectedRowIds,
+    isSelected,
+    isSelectedAll,
+    isIndeterminate,
+    toggleSelected,
+    toggleSelectedAll,
+  } = useRowSelect(rows.map((row) => row.id))
 
   useEffect(() => {
     axios
@@ -75,35 +90,34 @@ export default function EnhancedTable() {
     setPage(0)
   }
 
-  const isSelected = (name: string) => selected.indexOf(name) !== -1
-
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} tableName='Customers' />
         <TableContainer>
           <Table sx={{ minWidth: 750 }} aria-labelledby='tableTitle'>
             <EnhancedTableHead
               numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
+              onSelectAllClick={toggleSelectedAll}
               onRequestSort={useTableRequestSort}
               rowCount={rows.length}
+              checked={isSelectedAll}
             />
             <TableBody>
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.email)
+                  const isItemSelected = isSelected(String(row.id))
                   const labelId = `enhanced-table-checkbox-${index}`
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.email)}
+                      onClick={() => toggleSelected(row.id)}
                       role='checkbox'
                       aria-checked={isItemSelected}
                       tabIndex={-1}

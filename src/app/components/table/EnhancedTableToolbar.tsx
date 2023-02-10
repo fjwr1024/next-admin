@@ -5,10 +5,11 @@ import Toolbar from '@mui/material/Toolbar'
 
 interface EnhancedTableToolbarProps {
   numSelected: number
+  tableName: string
 }
 
 export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
-  const { numSelected } = props
+  const { numSelected, tableName } = props
 
   return (
     <Toolbar
@@ -27,7 +28,7 @@ export function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
         </Typography>
       ) : (
         <Typography sx={{ flex: '1 1 100%' }} variant='h6' id='tableTitle' component='div'>
-          Customers
+          {tableName}
         </Typography>
       )}
       {numSelected > 0 ? (
