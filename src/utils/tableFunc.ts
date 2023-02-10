@@ -1,4 +1,4 @@
-import { Order } from '@/types/table'
+import { Order } from '@/types/order'
 
 export function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
