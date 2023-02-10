@@ -4,12 +4,10 @@ import { TableHead, TableRow, TableCell, Checkbox, TableSortLabel, Box } from '@
 import { visuallyHidden } from '@mui/utils'
 
 interface EnhancedTableProps {
-  numSelected: number
   onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Users) => void
   onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void
   order: Order
   orderBy: string
-  rowCount: number
   checked: boolean
   indeterminate: boolean
 }

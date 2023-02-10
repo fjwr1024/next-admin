@@ -53,7 +53,7 @@ export const useChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>)
 
 export const useTableRequestSort = (event: React.MouseEvent<unknown>, property: keyof Users) => {
   const [order, setOrder] = useState<Order>('asc')
-  const [orderBy, setOrderBy] = useState<keyof Users>('email')
+  const [orderBy, setOrderBy] = useState<keyof Users>('id')
   const isAsc = orderBy === property && order === 'asc'
   setOrder(isAsc ? 'desc' : 'asc')
   setOrderBy(property)

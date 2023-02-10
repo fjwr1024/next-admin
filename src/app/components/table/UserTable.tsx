@@ -32,14 +32,8 @@ export default function EnhancedTable() {
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const [rows, setRows] = useState<Users[]>([])
 
-  const {
-    selectedRowIds,
-    isSelected,
-    isSelectedAll,
-    isIndeterminate,
-    toggleSelected,
-    toggleSelectedAll,
-  } = useRowSelect(rows.map((row) => row.id))
+  const { isSelected, isSelectedAll, isIndeterminate, toggleSelected, toggleSelectedAll } =
+    useRowSelect(rows.map((row) => row.id))
 
   useEffect(() => {
     axios
@@ -67,12 +61,10 @@ export default function EnhancedTable() {
         <TableContainer>
           <Table sx={{ minWidth: 750 }} aria-labelledby='tableTitle'>
             <EnhancedTableHead
-              numSelected={selected.length}
               order={order}
               orderBy={orderBy}
               onSelectAllClick={toggleSelectedAll}
               onRequestSort={useTableRequestSort}
-              rowCount={rows.length}
               checked={isSelectedAll}
               indeterminate={isIndeterminate}
             />
